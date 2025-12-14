@@ -1,17 +1,25 @@
-# main.py
-
 from agents import create_agent
 
-agent = create_agent()
+def main():
+    agent = create_agent()
 
-print("LangChain Agent is ready!")
-print("Type 'exit' to quit.")
+    print("Milestone 2 Agent is ready.")
+    print("Type 'exit' to quit.\n")
 
-while True:
-    query = input("You: ")
+    while True:
+        query = input("You: ")
 
-    if query.lower() == "exit":
-        break
+        if query.strip().lower() == "exit":
+            print("Goodbye!")
+            break
 
-    response = agent.run(query)
-    print("Agent:", response)
+        try:
+            response = agent.run(query)
+            print("Agent:", response)
+
+        except Exception as e:
+            print("Error:", str(e))
+
+
+if __name__ == "__main__":
+    main()
